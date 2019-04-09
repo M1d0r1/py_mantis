@@ -4,8 +4,7 @@ import json
 import os.path
 import importlib
 import jsonpickle
-from fixture.db import DbFixture
-from fixture.orm import ORMFixture
+
 
 fixture = None
 target = None
@@ -30,7 +29,6 @@ def app(request):
             "web"]
     if fixture is None or not fixture.is_valid():
         fixture = Application(browser=browser, baseurl=web_config["baseUrl"])
-    fixture.session.ensure_login(username=web_config['username'], password=web_config['password'])
     return fixture
 
 @pytest.fixture(scope="session", autouse=True)

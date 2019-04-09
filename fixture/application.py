@@ -1,7 +1,5 @@
 from selenium import webdriver
 from fixture.session import SessionHelper
-from fixture.group import GroupHelper
-from fixture.contact import ContactHelper
 from selenium.webdriver.support.ui import Select
 
 
@@ -22,8 +20,7 @@ class Application:
 
     def open_start_page(self):
         wd = self.wd
-        if wd.current_url.endswith("/addressbook/") and len(
-                wd.find_elements_by_xpath("//input[@value='Send e-Mail']")) > 0:
+        if wd.current_url.endswith("/login_page.php") and len(wd.find_element_by_xpath("//input[@value='Login']")) > 0:
             return
         else:
             self.wd.get(self.baseurl)
