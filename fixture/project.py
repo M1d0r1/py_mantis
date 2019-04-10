@@ -69,3 +69,10 @@ class ProjectHelper:
         name = element.find_elements_by_css_selector("td")[0].text
         project = Project(name=name)
         return project
+
+    def delete_by_name(self, name):
+        wd = self.app.wd
+        wd.find_element_by_link_text(name).click()
+        wd.find_element_by_xpath("//input[@value='Delete Project']").click()
+        wd.find_element_by_xpath("//input[@value='Delete Project']").click()
+        self.project_cache = None
