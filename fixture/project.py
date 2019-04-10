@@ -1,23 +1,27 @@
 from model.project import Project
 from selenium.webdriver.support.ui import Select
-import datetime
-import re
+
 
 class ProjectHelper:
     def __init__(self, app):
         self.app = app
 
+    project_cache = None
+
     def navigate_to_manage_projects_page(self):
         wd = self.app.wd
-        wd.find_element_by_link_text("Manage").click()
-        wd.find_element_by_link_text("Manage Projects").click()
-
+        if wd.current_url.endswith("/manage_proj_page.php") and len(wd.find_elements_by_xpath("// input[ @ value = 'Create New Project']"))>0:
+            return
+        else:
+            wd.find_element_by_link_text("Manage").click()
+            wd.find_element_by_link_text("Manage Projects").click()
 
     def create(self, project):
         wd = self.app.wd
         wd.find_element_by_xpath("// input[ @ value = 'Create New Project']").click()
         self.fill_form(project)
         wd.find_element_by_xpath("// input[ @ value = 'Add Project']").click()
+        self.project_cache = None
 
     def fill_form(self, project):
         wd = self.app.wd
@@ -25,6 +29,8 @@ class ProjectHelper:
         self.fill_list_field("status", project.status)
         self.fill_list_field("view_state", project.view_status)
         self.fill_text_field("description", project.description)
+        if not(wd.find_element_by_name("inherit_global").is_selected() == project.inherit):
+            wd.find_element_by_name("inherit_global").click()
 
     def fill_text_field(self, field_name, text):
             wd = self.app.wd
@@ -39,14 +45,14 @@ class ProjectHelper:
             Select(wd.find_element_by_name(field_name)).select_by_visible_text(text)
 
     def get_project_list(self):
-        # if self.contact_cache is None:
+        if self.project_cache is None:
             wd = self.app.wd
             self.navigate_to_manage_projects_page()
             project_cache = []
             for i in range(0,self.count()-1):
                 project = self.get_data_from_projects_page_by_index(i)
                 project_cache.append(project)
-            return list(project_cache)
+        return list(project_cache)
 
     def count(self):
         wd = self.app.wd

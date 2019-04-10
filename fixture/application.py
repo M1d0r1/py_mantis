@@ -27,13 +27,6 @@ class Application:
         else:
             self.wd.get(self.baseurl)
 
-    def navigate_to_groups(self):
-        wd = self.wd
-        if wd.current_url.endswith("/group.php") and len(wd.find_elements_by_name("New group")):
-            return
-        else:
-            wd.find_element_by_link_text("groups").click()
-
     def fill_text_field(self, field_name, text):
         wd = self.wd
         if text is not None:

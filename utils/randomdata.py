@@ -7,6 +7,20 @@ class RandomData:
     def __init__(self):
         pass
 
+    @staticmethod
+    def get_random_bool():
+        i = random.randrange(2)
+        if i == 0:
+            return True
+        else:
+            return False
+
+
+    @staticmethod
+    def get_random_list_value(list):
+        i = random.randrange(len(list))
+        return list[i]
+
     # noinspection PyUnusedLocal
     @staticmethod
     def get_random_string():

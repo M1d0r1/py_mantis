@@ -3,7 +3,7 @@ from fixture.application import Application
 import json
 import os.path
 import importlib
-
+import jsonpickle
 
 
 fixture = None

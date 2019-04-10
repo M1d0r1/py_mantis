@@ -12,5 +12,5 @@ class Project:
     def __repr__(self):
         return "Project:name=%s" % (self.name)
 
-    def return_name(self):
+    def key_by_name(self):
         return self.name
