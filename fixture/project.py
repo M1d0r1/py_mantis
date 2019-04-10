@@ -43,7 +43,7 @@ class ProjectHelper:
             wd = self.app.wd
             self.navigate_to_manage_projects_page()
             project_cache = []
-            for i in range(0,self.count()):
+            for i in range(0,self.count()-1):
                 project = self.get_data_from_projects_page_by_index(i)
                 project_cache.append(project)
             return list(project_cache)
@@ -55,6 +55,7 @@ class ProjectHelper:
 
     def get_data_from_projects_page_by_index(self, index):
         wd = self.app.wd
+        print(index, " ")
         if index % 2 == 0:
             element = wd.find_elements_by_css_selector("table.width100 > tbody > tr.row-1")[index//2]
         if index % 2 == 1:

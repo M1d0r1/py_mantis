@@ -12,4 +12,4 @@ def test_add_project(app):
     old_projects.append(new_project)
     print(old_projects)
     print(new_projects)
-    # assert sorted(old_projects, key = Project.return_name) == sorted(new_projects, key = Project.return_name)
+    assert sorted(old_projects, key = Project.return_name) == sorted(new_projects, key = Project.return_name)
