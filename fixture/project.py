@@ -43,14 +43,22 @@ class ProjectHelper:
             wd = self.app.wd
             self.navigate_to_manage_projects_page()
             project_cache = []
-            for i in range(0,2):
+            for i in range(0,self.count()):
                 project = self.get_data_from_projects_page_by_index(i)
                 project_cache.append(project)
             return list(project_cache)
 
+    def count(self):
+        wd = self.app.wd
+        self.navigate_to_manage_projects_page()
+        return len(wd.find_elements_by_css_selector("tr.row-1"))+len(wd.find_elements_by_css_selector("tr.row-2"))
 
     def get_data_from_projects_page_by_index(self, index):
         wd = self.app.wd
-        element = wd.find_element_by_css_selector("tr.row-%s > td" % str(index+1))
-        project = Project(name = element.text)
+        if index % 2 == 0:
+            element = wd.find_elements_by_css_selector("table.width100 > tbody > tr.row-1")[index//2]
+        if index % 2 == 1:
+            element = wd.find_elements_by_css_selector("table.width100 > tbody > tr.row-2")[index//2]
+        name = element.find_elements_by_css_selector("td")[0].text
+        project = Project(name=name)
         return project
