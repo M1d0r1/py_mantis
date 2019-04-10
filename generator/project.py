@@ -11,7 +11,7 @@ except getopt.GetoptError as err:
     getopt.usage()
     sys.exit(2)
 
-n = 2
+n = 4
 f = "data/projects.json"
 
 for o, a in opts:

@@ -1,10 +1,26 @@
 [
   {
     "py/object": "model.project.Project",
-    "description": "z0tmxpppEV 1\no95mFeZUgDq3ReR\nOHCymwgXRvA8BHvQzao",
+    "description": "8dtU sJFq9b7s 9ga\n\nGue4a5W Q6eyPzp",
+    "inherit": false,
+    "name": "Name2e qPG rJphe",
+    "status": "development",
+    "view_status": "public"
+  },
+  {
+    "py/object": "model.project.Project",
+    "description": "Ik9nPDL1hh\nE2uZeNhqPMeYwVTRuI\nNADNBKHYm2juwYr",
     "inherit": true,
-    "name": "NameQnmhdMSY8A9oWF9GvT",
+    "name": "Names",
     "status": "development",
     "view_status": "private"
+  },
+  {
+    "py/object": "model.project.Project",
+    "description": "\n39aLLObCcgw\nfWXe4xAT",
+    "inherit": false,
+    "name": "NameI9zFyJ17YPFzhH6",
+    "status": "obsolete",
+    "view_status": "public"
   }
 ]

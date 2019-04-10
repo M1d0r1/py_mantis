@@ -61,7 +61,6 @@ class ProjectHelper:
 
     def get_data_from_projects_page_by_index(self, index):
         wd = self.app.wd
-        print(index, " ")
         if index % 2 == 0:
             element = wd.find_elements_by_css_selector("table.width100 > tbody > tr.row-1")[index//2]
         if index % 2 == 1:

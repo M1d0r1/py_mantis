@@ -1,10 +1,8 @@
 from model.project import Project
-from utils.randomdata import RandomData
 import random
 
 
 def test_delete_project(app):
-    app.session.ensure_login("administrator", "root")
     app.project.navigate_to_manage_projects_page()
     old_projects = app.project.get_project_list()
     project = random.choice(old_projects)

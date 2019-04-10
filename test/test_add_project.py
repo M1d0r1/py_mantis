@@ -3,7 +3,6 @@ from utils.randomdata import RandomData
 
 
 def test_add_project(app, json_projects):
-    app.session.ensure_login("administrator", "root")
     app.project.navigate_to_manage_projects_page()
     new_project = json_projects
     new_project.name = json_projects.name + RandomData.get_random_string()
