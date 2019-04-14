@@ -1,5 +1,3 @@
-import time
-
 class SessionHelper:
     def __init__(self, app):
         self.app = app
@@ -11,7 +9,7 @@ class SessionHelper:
         wd.find_element_by_name("username").send_keys(username)
         wd.find_element_by_name("password").clear()
         wd.find_element_by_name("password").send_keys(password)
-        #time.sleep(5)
+        # time.sleep(5)
         wd.find_element_by_xpath("//input[@value='Login']").click()
 
     def logout(self):
