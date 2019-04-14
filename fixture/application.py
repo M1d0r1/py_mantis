@@ -6,7 +6,7 @@ from selenium.webdriver.support.ui import Select
 
 
 class Application:
-    def __init__(self, browser = "firefox", baseurl = "http://localhost/addressbook"):
+    def __init__(self, browser = "firefox", baseurl = "http://localhost/addressbook", username = "user", password = "pass"):
         if browser == "firefox":
             self.wd = webdriver.Firefox()
         elif browser == "chrome":
@@ -20,6 +20,8 @@ class Application:
         self.session = SessionHelper(self)
         self.project = ProjectHelper(self)
         self.baseurl = baseurl
+        self.username = username
+        self.password = password
 
 
     def open_start_page(self):
